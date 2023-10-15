@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="image/depositphotos_375972066-stock-illustration-clock-icon-black-circle-isolated.webp"
+      type="image/x-icon"
+    />
+  </head>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      background-color: rgb(8, 8, 15);
+      color: rgb(0, 0, 0);
+    }
+    .main {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+    }
+
+    .hero {
+      margin: auto;
+      height: 400px;
+      border: 1px solid rgb(255, 255, 255);
+      width: 400px;
+      border-radius: 30px;
+      box-shadow: 0px 3px 15px white;
+    }
+
+    .heading {
+      align-items: center;
+      text-align: center;
+      border: 1px solid rgb(255, 255, 255);
+      box-shadow: 0px 3px 15px rgb(237, 209, 0);
+      width: 55%;
+      border-radius: 30px;
+      background-color: rgb(31, 16, 44);
+      color: black;
+      font-size: 25px;
+      color: rgb(255, 0, 0);
+      font-weight: bolder;
+      margin: auto;
+      margin: 16px auto 16px auto;
+
+      padding: 10px;
+    }
+
+    .clock {
+      height: 75%;
+      width: 85%;
+      box-shadow: 0px 3px 15px rgb(214, 10, 10);
+      margin: auto;
+      display: flex;
+      border: 1px solid white;
+      margin-top: 10px;
+      border-radius: 30px;
+      flex-direction: column;
+    }
+
+    .time {
+      height: 70px;
+      width: 80%;
+      border: 1px solid white;
+      box-shadow: 1px 2px 10px rgb(255, 0, 0);
+      background-color: rgb(255, 255, 255);
+      margin: auto;
+      border-radius: 30px;
+      display: flex;
+    }
+
+    .day {
+      width: 70%;
+      border-radius: 30px;
+      margin: auto;
+      height: 50px;
+      border: 1px solid white;
+      background-color: rgb(0, 0, 0);
+      margin-top: 10px;
+      box-shadow: 1px 2px 10px white;
+      display: flex;
+      border-radius: 30px;
+      padding: 3px;
+      flex-direction: row;
+    }
+
+    #cc {
+      height: 80%;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 80px;
+      display: flex;
+    }
+
+    #cc h2 {
+      color: black;
+      text-align: center;
+      justify-content: center;
+      font-weight: bolder;
+      align-items: center;
+      background-color: transparent;
+    }
+    .x,
+    .y {
+      width: 25%;
+    }
+    .z {
+      width: 36%;
+    }
+
+    .time h2 {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      width: 80%;
+      padding: 15px;
+      overflow: hidden;
+      background-color: transparent;
+      font-family: "Young ", serif;
+      font-weight: bolder;
+      border-radius: 30px;
+    }
+
+    .xy h2 {
+      height: 30px;
+      color: white;
+      margin: auto;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media only screen and (max-width: 480px) {
+      body {
+        background-color: rgb(255, 0, 0);
+      }
+      .hero {
+        margin: 10px;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <body>
+    <div class="main">
+      <div class="hero">
+        <div class="heading">Digital Clock</div>
+        <div class="clock">
+          <div class="time"></div>
+          <div class="day">
+            <div class="x" id="cc"></div>
+            <div class="y" id="cc"></div>
+            <div class="z" id="cc"></div>
+          </div>
+          <div class="day xy"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const yy1 = new Date().getDay();
+
+    const aajkadin = document.querySelector(".xy");
+    const hh = document.createElement("h2");
+    let td = yy1.toLocaleString();
+    aajkadin.appendChild(hh);
+
+    const clock = document.querySelector(".time");
+    const today = document.querySelector(".clock");
+    const newElement = document.createElement("display");
+    newElement.id = "data";
+    clock.appendChild(newElement);
+
+    const timedata = document.createElement("h2");
+    clock.appendChild(timedata);
+
+    const x = document.querySelector(".x");
+    const timeday = document.createElement("h2");
+    x.appendChild(timeday);
+
+    const y = document.querySelector(".y");
+    const timeMonth = document.createElement("h2");
+    y.appendChild(timeMonth);
+
+    const z = document.querySelector(".z");
+    const timeYear = document.createElement("h2");
+    z.appendChild(timeYear);
+
+    setInterval(() => {
+      const date = new Date();
+      const x = date.toLocaleTimeString();
+      timedata.innerHTML = x.toUpperCase();
+
+      timeday.innerHTML =
+        date.toLocaleDateString()[0] + date.toLocaleDateString()[1];
+
+      timeMonth.innerHTML =
+        date.toLocaleDateString()[3] + date.toDateString()[4];
+
+      timeYear.innerHTML =
+        date.toLocaleDateString()[6] +
+        date.toLocaleDateString()[7] +
+        date.toLocaleDateString()[8] +
+        date.toLocaleDateString()[9];
+
+      if (td == "0") {
+        hh.innerHTML = "SUNDAY";
+      } else if (td == "1") {
+        hh.innerHTML = "MONDAY";
+      } else if (td == "2") {
+        hh.innerHTML = "TUESDAY";
+      } else if (td == "3") {
+        hh.innerHTML = "WEDNESDAY";
+      } else if (td == "4") {
+        hh.innerHTML = "THURSDAY";
+      } else if (td == "5") {
+        hh.innerHTML = "FRIDAY";
+      } else if (td == "6") {
+        hh.innerHTML = "SATURDAY";
+      }
+    }, 1000);
+  </script>
+</html>
